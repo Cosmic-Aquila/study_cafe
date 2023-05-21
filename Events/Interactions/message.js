@@ -22,7 +22,7 @@ module.exports = {
       message.guild.id == constantsFile.staffServerID &&
       message.embeds.length > 0 &&
       message.embeds[0].author &&
-      message.embeds[0].author.name === "Lauren1066"
+      message.embeds[0].author.name === "Cosmic-Aquila"
     ) {
       await message.channel.send("Attempting to restart...");
       const url = "https://panel.storinatemc.tech/api/client/servers/0eb4ad17/power?signal=restart";
