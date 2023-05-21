@@ -41,7 +41,7 @@ const roles = {
   applicationPingRole: "1109690822900854814",
   welcomePingRole: "1109688873497411592",
   suggestionPingRole: "1109688873497411593",
-  ticketPingRole: "",
+  ticketPingRole: "1109978528507764776",
 
   // Misc Roles
   noCooldownRole: "1109688873778430131",

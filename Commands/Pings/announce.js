@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-const pingCooldown = require("../../Model/Cooldowns/event.js");
+const pingCooldown = require("../../Model/Cooldowns/announce.js");
 const constantsFile = require("../../Storage/constants");
 
 module.exports = {
