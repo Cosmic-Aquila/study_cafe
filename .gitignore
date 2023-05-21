@@ -1,0 +1,4 @@
+node_modules/
+Storage/config.json
+package-lock.json
+Storage/badWords.js
