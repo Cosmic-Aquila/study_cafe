@@ -33,7 +33,7 @@ module.exports = {
       }
     } catch (error) {
       console.error(error);
-      return interaction.reply("An error occurred while trying to edit the message.");
+      return interaction.reply("an error occurred while trying to edit the message.");
     }
   },
 };

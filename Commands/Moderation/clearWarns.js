@@ -5,7 +5,7 @@ const constantsFile = require("../../Storage/constants.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("clearwarns")
-    .setDescription("Clear ALL warns from a user.")
+    .setDescription("clear all warns from a user.")
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
     .addUserOption((option) => option.setName("user").setDescription("The user to clear warns from").setRequired(true)),
   async execute(interaction) {

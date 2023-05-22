@@ -36,12 +36,12 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor("#e35c54")
       .setTitle(`${user.tag} has been warned!`)
-      .setDescription(`**User:** <@${user.id}>\n**Reason:** ${warnReason}\n**Warns:** ${warnAmount}\n**Moderator:** ${interaction.user.tag}`);
+      .setDescription(`**user:** <@${user.id}>\n**reason:** ${warnReason}\n**warns:** ${warnAmount}\n**moderator:** ${interaction.user.tag}`);
 
     punishmentChannel.send({ embeds: [embed] });
 
     try {
-      user.send(`You have been warned in **study cafe** for **${warnReason}**!`);
+      user.send(`you have been warned in **study cafe** for **${warnReason}**!`);
     } catch {
       punishmentChannel.send("I was not able to DM the user!");
     }

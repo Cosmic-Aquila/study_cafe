@@ -1,5 +1,6 @@
 const { Client, GatewayIntentBits, Collection, Partials } = require("discord.js");
 const { deploy } = require("./deploy.js");
+const { Player } = require("discord-player");
 
 deploy();
 
@@ -23,6 +24,18 @@ const client = new Client({
 
 client.commands = new Collection();
 client.config = require("./Storage/config.json");
+
+client.player = new Player(client, {
+  ytdlOptions: {
+    quality: "highestaudio",
+    highWaterMark: 1 << 25,
+  },
+});
+
+async function loadExtractors(client) {
+  await client.player.extractors.loadDefault();
+}
+loadExtractors(client);
 
 module.exports = { client };
 
