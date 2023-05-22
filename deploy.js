@@ -24,11 +24,7 @@ async function deploy() {
 
   try {
     // Delete all commands
-    const existingCommands = await rest.get(Routes.applicationGuildCommands(clientId, constantsFile.mainServerID));
-    const deletePromises = existingCommands.map((command) =>
-      rest.delete(`${Routes.applicationGuildCommands(clientId, constantsFile.mainServerID)}/${command.id}`)
-    );
-    await Promise.all(deletePromises);
+    await rest.put(Routes.applicationCommands(clientId), { body: [] }); // Clear existing commands
 
     // Add all the commands back
     await rest.put(Routes.applicationCommands(clientId), { body: commands });
