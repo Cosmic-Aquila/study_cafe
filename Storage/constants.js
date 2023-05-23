@@ -50,6 +50,7 @@ const roles = {
   boosterRole: "1109705746515509318",
   muteRole: "1109688873753247772",
   memberRole: "1109688873635811413",
+  botRole: "1109688873635811411",
 
   // Level Roles
   levelonerole: "1109688873635811414",

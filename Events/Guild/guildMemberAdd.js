@@ -35,7 +35,11 @@ module.exports = {
         .setColor("eec1ad");
 
       welcomeChannel.send({ content: `<@&${constantsFile.welcomePingRole}>`, embeds: [embed] });
-      await member.roles.add(constantsFile.memberRole);
+      if (!member.bot) {
+        await member.roles.add(constantsFile.memberRole);
+      } else if (member.bot) {
+        await member.roles.add(constantsFile.botRole);
+      }
     }
   },
 };
