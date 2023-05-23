@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 const { exec } = require("child_process");
+const constants = require("../../Storage/constants");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,8 +9,8 @@ module.exports = {
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageThreads)
     .addStringOption((option) => option.setName("command").setDescription("The command to run").setRequired(true)),
   async execute(interaction) {
-    if (interaction.user.id !== "693511698912641105") {
-      interaction.reply("Sorry! Only Toast can use this.");
+    if (interaction.user.id !== constants.ownerID) {
+      interaction.reply("sorry no permissions.");
       return;
     }
 
