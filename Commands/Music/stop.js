@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const { clientId } = require("../../Storage/config.json");
 
 module.exports = {
   data: new SlashCommandBuilder().setName("stop").setDescription("skip a song"),
@@ -15,7 +16,9 @@ module.exports = {
     const currentTrack = queue.currentTrack;
     await player.nodes.delete(interaction.guild.id);
 
-    interaction.client.voice.channel.leave();
+    const member = interaction.guild.members.fetch(clientId);
+
+    member.voice.channel.leave();
     interaction.reply(`queue stopped **${currentTrack}**`);
   },
 };
