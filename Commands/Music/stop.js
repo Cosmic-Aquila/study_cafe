@@ -12,13 +12,13 @@ module.exports = {
     if (!queue || !queue.node.isPlaying()) {
       return interaction.reply("no queue/not playing");
     }
-
-    const currentTrack = queue.currentTrack;
     await player.nodes.delete(interaction.guild.id);
 
-    const member = interaction.guild.members.fetch(clientId);
+    const member = await interaction.guild.members.fetch(clientId);
 
-    member.voice.channel.leave();
-    interaction.reply(`queue stopped **${currentTrack}**`);
+    console.log(member);
+
+    member.voice.disconnect();
+    interaction.reply(`queue stopped`);
   },
 };
