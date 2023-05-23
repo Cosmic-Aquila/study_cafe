@@ -16,7 +16,7 @@ module.exports = {
     if (!queue) return interaction.reply({ content: `no music currently playing `, ephemeral: true });
 
     if (queue.connection.paused) return interaction.reply({ content: "the track is currently paused!", ephemeral: true });
-    queue.setPaused(true);
+    player.pause(true);
     return interaction.reply({ content: `${queue.current.title} paused` });
   },
 };
