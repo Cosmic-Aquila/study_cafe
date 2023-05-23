@@ -23,7 +23,7 @@ module.exports = {
         return;
       }
       const embed = new EmbedBuilder()
-        .setColor("#e35c54")
+        .setColor("##ff7a70")
         .setTitle(`${user.tag} has been kicked!`)
         .setDescription(`**User:** <@${user.id}>\n**Reason:** ${kickReason}\n**Moderator:** ${interaction.user.tag}`);
 
