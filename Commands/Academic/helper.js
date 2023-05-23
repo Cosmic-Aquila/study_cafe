@@ -2,13 +2,12 @@ const { SlashCommandBuilder } = require("discord.js");
 const helperCooldown = require("../../Model/Cooldowns/helperPing.js");
 const constantsFile = require("../../Storage/constants.js");
 const roles = [
-  { name: "Math", value: "1109688873690349683" },
-  { name: "Science", value: "1109688873690349682" },
-  { name: "English", value: "1109688873690349681" },
-  { name: "History", value: "1109688873690349680" },
-  { name: "Spanish", value: "1109688873669361678" },
-  { name: "Programming", value: "1109688873669361682" },
-  { name: "Technology", value: "1109688873669361681" },
+  { name: "math", value: "1109688873690349683" },
+  { name: "science", value: "1109688873690349682" },
+  { name: "english", value: "1109688873690349681" },
+  { name: "history", value: "1109688873690349680" },
+  { name: "spanish", value: "1109688873669361678" },
+  { name: "code/tech", value: "1109688873669361682" },
 ];
 function getValueByName(name) {
   for (let i = 0; i < roles.length; i++) {
@@ -29,13 +28,12 @@ module.exports = {
         .setDescription("The subject you need help in")
         .setRequired(true)
         .addChoices(
-          { name: "Math", value: "Math" },
-          { name: "Science", value: "Science" },
-          { name: "English", value: "English" },
-          { name: "History", value: "History" },
-          { name: "Spanish", value: "Spanish" },
-          { name: "Programming", value: "Programming" },
-          { name: "Technology", value: "Technology" }
+          { name: "math", value: "math" },
+          { name: "science", value: "science" },
+          { name: "english", value: "english" },
+          { name: "history", value: "history" },
+          { name: "spanish", value: "spanish" },
+          { name: "code/tech", value: "code/tech" }
         )
         .setRequired(true)
     ),
