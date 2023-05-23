@@ -15,6 +15,7 @@ module.exports = {
     const currentTrack = queue.currentTrack;
     await player.nodes.delete(interaction.guild.id);
 
+    interaction.guild.me.voice.channel.leave();
     interaction.reply(`queue stopped **${currentTrack}**`);
   },
 };
