@@ -13,8 +13,8 @@ module.exports = {
     }
 
     const currentTrack = queue.currentTrack;
-    await queue.node.skip();
+    await player.nodes.delete(interaction.guild.id);
 
-    interaction.reply(`skipped **${currentTrack}**`);
+    interaction.reply(`queue stopped **${currentTrack}**`);
   },
 };
