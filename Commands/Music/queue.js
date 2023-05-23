@@ -16,21 +16,25 @@ module.exports = {
       return interaction.followUp("you are not in a vc!");
     }
 
-    const tracks = queue.tracks.toArray().map((track, i) => `**${i + 1} - ${track.title} | ${track.author}**`);
-
-    if (!tracks || tracks.length === 0) {
-      const embed = new EmbedBuilder().setTitle("Queue").setDescription(`1 - ${queue.currentTrack}`).setColor("#0099ff");
-      return interaction.followUp({ embeds: [embed] });
+    const tracks = queue.tracks.toArray();
+    const arrayTracks = [`**1 - ${queue.currentTrack.title} | ${queue.currentTrack.author}**`];
+    if (tracks) {
+      let numbering = 2;
+      for (let i = 0; i < tracks.length; i++) {
+        arrayTracks.push(`**${numbering} - ${tracks[i].title} | ${tracks[i].author}**`);
+      }
+      numbering++;
     }
 
     const pages = [];
-    for (let i = 0; i < tracks.length; i += 10) {
-      const pageTracks = tracks.slice(i, i + 10);
+    for (let i = 0; i < arrayTracks.length; i += 10) {
+      const pageTracks = arrayTracks.slice(i, i + 10);
+
       const embed = new EmbedBuilder()
         .setTitle("Queue")
         .setDescription(pageTracks.join("\n"))
         .setColor("#0099ff")
-        .setFooter({ text: `Page ${Math.floor(i / 10) + 1}/${Math.ceil(tracks.length / 10)}` });
+        .setFooter({ text: `Page ${Math.floor(i / 10) + 1}/${Math.ceil(arrayTracks.length / 10)}` });
 
       pages.push(embed);
     }
