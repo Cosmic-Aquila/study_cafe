@@ -18,7 +18,7 @@ module.exports = {
     await interaction.channel.bulkDelete(messagesToDelete);
 
     const embed = new EmbedBuilder()
-      .setColor("##ff7a70")
+      .setColor("#ff7a70")
       .setTitle(`Messages deleted in <#${interaction.channel.id}>!`)
       .setDescription(`**Messages Purged:** ${messagesToDelete}\n**Moderator:** ${interaction.user.username}`);
 

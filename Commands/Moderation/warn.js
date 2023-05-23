@@ -34,7 +34,7 @@ module.exports = {
     }
 
     const embed = new EmbedBuilder()
-      .setColor("##ff7a70")
+      .setColor("#ff7a70")
       .setTitle(`${user.tag} has been warned!`)
       .setDescription(`**user:** <@${user.id}>\n**reason:** ${warnReason}\n**warns:** ${warnAmount}\n**moderator:** ${interaction.user.tag}`);
 

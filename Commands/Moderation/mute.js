@@ -30,7 +30,7 @@ module.exports = {
       }
 
       const embed = new EmbedBuilder()
-        .setColor("##ff7a70")
+        .setColor("#ff7a70")
         .setTitle(`${user.tag} has been muted!`)
         .setDescription(
           `**User:** <@${user.id}>\n**Reason:** ${muteReason}\n**Duration:** ${formattedDuration}\n**Moderator:** ${interaction.user.tag}`

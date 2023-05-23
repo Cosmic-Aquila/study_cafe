@@ -33,7 +33,7 @@ module.exports = {
       await guild.members.ban(userID, { reason: banReason, deleteMessageSeconds: deleteDays / 86400 });
 
       const embed = new EmbedBuilder()
-        .setColor("##ff7a70")
+        .setColor("#ff7a70")
         .setTitle(`${user.tag} has been banned!`)
         .setDescription(`**User:** <@${user.id}>\n**Reason:** ${banReason}\n**Moderator:** ${interaction.user.tag}`);
 
