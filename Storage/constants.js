@@ -49,6 +49,7 @@ const roles = {
   noAutoReplyRole: "1109688873635811412",
   boosterRole: "1109705746515509318",
   muteRole: "1109688873753247772",
+  memberRole: "1109688873635811413",
 
   // Level Roles
   levelonerole: "1109688873635811414",
