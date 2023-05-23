@@ -9,7 +9,7 @@ module.exports = {
     if (!channel) return interaction.reply("You are not connected to a voice channel!");
 
     if (!queue || !queue.node.isPlaying()) {
-      return interaction.reply("you are not in a vc");
+      return interaction.reply("no queue/not playing");
     }
 
     const currentTrack = queue.currentTrack;
