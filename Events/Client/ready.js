@@ -14,6 +14,14 @@ module.exports = {
     // Log to terminal that bot has logged in
     console.log(`Logged in as ${client.user.tag}!`);
 
+    // Fetch reaction messages
+    const messages = ["1110408033948934246", "1110408997984542760", "1110409412478238720", "1110410509213241384", "1110411293015429181"];
+    const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
+    const rolesChannel = await mainGuild.channels.fetch("1109688874634067971");
+    for (const message of messages) {
+      await rolesChannel.messages.fetch(message);
+    }
+
     // Get channel and send a message saying the bot has started
     const timeStarted = Math.floor(new Date().getTime() / 1000);
     client.channels
