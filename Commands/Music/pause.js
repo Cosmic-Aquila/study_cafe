@@ -3,8 +3,6 @@ const { SlashCommandBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder().setName("pause").setDescription("Pause a song"),
   async execute(interaction) {
-    await interaction.deferReply();
-
     const player = interaction.client.player;
     const channel = interaction.member.voice.channel;
 
