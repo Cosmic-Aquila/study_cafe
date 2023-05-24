@@ -110,7 +110,7 @@ module.exports = {
               name: "After Hours Bump Reminder",
               iconURL: guild.iconURL({ extension: "png" }),
             });
-          channel.send({ content: "<@&1041925597141671967>", embeds: [embed] });
+          channel.send({ content: `<@${constantsFile.bumpPings}>`, embeds: [embed] });
           bumpData.hasPinged = true;
           bumpData.save();
         }

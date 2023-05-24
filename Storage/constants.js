@@ -42,6 +42,7 @@ const roles = {
   welcomePingRole: "1109688873497411592",
   suggestionPingRole: "1109688873497411593",
   ticketPingRole: "1109978528507764776",
+  bumpPings: "1109688873530953757",
 
   // Misc Roles
   noCooldownRole: "1109688873778430131",
