@@ -23,6 +23,7 @@ async function deploy() {
 
   // Add all the commands back
   await rest.put(Routes.applicationGuildCommands(clientId, constantsFile.mainServerID), { body: commands });
+  await rest.put(Routes.applicationGuildCommands(clientId, constantsFile.staffServerID), { body: commands });
 }
 
 module.exports = { deploy };
