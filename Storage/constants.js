@@ -9,7 +9,7 @@ const ids = {
 
   // Channel IDs
   statusChannel: "1109690823840387142",
-  mainGeneralChat: "1109688874822799424",
+  mainGeneralChat: "1110992982326386790",
   getHelpChannel: "1109688875061870698",
   staffLBChannel: "1109690823303516232",
   mainLBChannel: "1109688874634067972",
