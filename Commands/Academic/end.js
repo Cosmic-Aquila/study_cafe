@@ -27,7 +27,7 @@ module.exports = {
         },
         {
           name: "for the next person who needs help:",
-          value: "yo request assistance, please use /helper and select the subject you need from the menu.",
+          value: "to request assistance, please use /helper and select the subject you need from the menu.",
         }
       );
     interaction.editReply({
