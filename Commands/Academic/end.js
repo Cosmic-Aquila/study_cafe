@@ -8,14 +8,14 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setFooter({
-        text: `Requested by ${interaction.user.username}`,
+        text: `requested by ${interaction.user.username}`,
         value: interaction.user.displayAvatarURL({
           extension: "png",
         }),
       })
       .setColor("#8ef1ec")
       .setTimestamp()
-      .setTitle("Done recieving help?")
+      .setTitle("done recieving help?")
       .setAuthor({
         name: `${interaction.user.username} - (${interaction.user.id})`,
         iconURL: interaction.guild.iconURL({ format: "png" }),
