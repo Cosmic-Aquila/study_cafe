@@ -12,7 +12,7 @@ module.exports = {
       guildID: interaction.guild.id,
     });
 
-    const success = `<@&${constantsFile.questionPingRole}>\nCreate a ticket to answer the QOTD: https://discord.com/channels/1040773239607140485/1040841716086874133/1107045188351836170`;
+    const success = `<@&${constantsFile.questionPingRole}>\nCreate a ticket to answer the QOTD`;
     const regularCooldown = 1200000;
 
     if (usedData) {
