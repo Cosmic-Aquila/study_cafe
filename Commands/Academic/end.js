@@ -22,12 +22,12 @@ module.exports = {
       })
       .addFields(
         {
-          name: "If you felt your helper did a good job consider doing /rep <user> and leave a /review",
-          value: "If you did not find your helper helpful we are very sorry to hear that! If you feel the need, let the owner know!",
+          name: "if you found your helper helpful, consider using /rep <user> to give them feedback.",
+          value: "if you didn't find your helper helpful, we apologize for the inconvenience. If needed, please let the owner know!",
         },
         {
-          name: "To the next person who needs help:",
-          value: "To ping a helper please do /helper. Then select the subject you need from in the menu.",
+          name: "for the next person who needs help:",
+          value: "yo request assistance, please use /helper and select the subject you need from the menu.",
         }
       );
     interaction.editReply({
