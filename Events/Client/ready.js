@@ -6,6 +6,7 @@ const config = require("../../Storage/config.json");
 const constantsFile = require("../../Storage/constants.js");
 
 const muteModel = require("../../Model/Moderation/mutes.js");
+const bumpModel = require("../../Model/bump.js");
 
 module.exports = {
   name: "ready",
@@ -81,6 +82,30 @@ module.exports = {
             await member.roles.remove(muteRole);
             await muteModel.findOneAndDelete({ memberID: muteData.memberID });
           }
+        }
+
+        const bumpData = await bumpModel.findOne({});
+        if (!bumpData) {
+          return;
+        }
+        const guild = await client.guilds.fetch(constantsFile.mainServerID);
+        const lastBumped = bumpData.lastBumped;
+        const currentTime = new Date();
+        const timeDiffInMs = currentTime - lastBumped;
+        const timeDiffInHours = timeDiffInMs / (1000 * 60 * 60); // Convert milliseconds to hours
+        if (timeDiffInHours >= 2 && bumpData.hasPinged === false) {
+          const channel = await client.channels.fetch("1110993048919343205");
+          const embed = new EmbedBuilder()
+            .setDescription("Time to bump the server!")
+            .setColor("#8ef1ec")
+            .setDescription("Bump the server using `/bump`")
+            .setAuthor({
+              name: "After Hours Bump Reminder",
+              iconURL: guild.iconURL({ extension: "png" }),
+            });
+          channel.send({ content: "<@&1041925597141671967>", embeds: [embed] });
+          bumpData.hasPinged = true;
+          bumpData.save();
         }
       } catch (err) {
         console.error(err);
