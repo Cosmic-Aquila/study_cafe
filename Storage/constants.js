@@ -35,7 +35,7 @@ const roles = {
   eventPingRole: "1109688873530953750",
   giveawayPingRole: "1109688873530953749",
   journalPingRole: "1109688873530953755",
-  questionPingRole: "1109688873530953753",
+  questionPingRole: "1109688873530953756",
   announcementPings: "1109688873530953758",
   factPingRole: "1109688873530953756",
   applicationPingRole: "1109690822900854814",
