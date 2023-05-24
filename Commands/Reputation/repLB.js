@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const repModel = require("../../Model/repBalance.js");
 const ordinal = (num) => `${num.toLocaleString("en-US")}${[, "st", "nd", "rd"][(num / 10) % 10 ^ 1 && num % 10] || "th"}`;
+const constantsFile = require("../../Storage/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder().setName("replb").setDescription("Check the rep lb."),

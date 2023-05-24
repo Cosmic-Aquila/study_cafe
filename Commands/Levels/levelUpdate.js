@@ -3,16 +3,13 @@ const expModel = require("../../Model/Levels/exp.js");
 const { checkLevel } = require("../../Functions/Levels/checkLevel.js");
 
 module.exports = {
-  data: new SlashCommandBuilder()
-    .setName("levelupdate")
-    .setDescription("Update everyone's levels.")
-    .addUserOption((option) => option.setName("target").setDescription("The user to check")),
-
+  data: new SlashCommandBuilder().setName("levelupdate").setDescription("Update everyone's levels."),
   async execute(interaction) {
     try {
       const members = await interaction.guild.members.fetch();
 
       members.forEach(async (member) => {
+        console.log(member);
         const data = await expModel.find({ memberID: member.id });
         checkLevel(data.level, interaction.guild, member);
       });
