@@ -98,6 +98,33 @@ async function reactionRoles(messageID, emoji, member) {
         member.roles.add(role);
       }
       break;
+    case "1111028949431111772":
+      if (emoji === "one") {
+        const role = await guild.roles.fetch("1109688873753247770");
+        member.roles.add(role);
+      } else if (emoji === "two") {
+        const role = await guild.roles.fetch("1109688873732280321");
+        member.roles.add(role);
+      } else if (emoji === "three") {
+        const role = await guild.roles.fetch("1109688873753247764");
+        member.roles.add(role);
+      } else if (emoji === "four") {
+        const role = await guild.roles.fetch("1109688873732280322");
+        member.roles.add(role);
+      } else if (emoji === "five") {
+        const role = await guild.roles.fetch("1109688873732280320");
+        member.roles.add(role);
+      } else if (emoji === "six") {
+        const role = await guild.roles.fetch("1109688873732280325");
+        member.roles.add(role);
+      } else if (emoji === "seven") {
+        const role = await guild.roles.fetch("1109688873690349688");
+        member.roles.add(role);
+      } else if (emoji === "eight") {
+        const role = await guild.roles.fetch("1109688873690349687");
+        member.roles.add(role);
+      }
+      break;
   }
 }
 module.exports = { reactionRoles };

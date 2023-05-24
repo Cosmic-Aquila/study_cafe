@@ -1,4 +1,4 @@
-const { ActivityType } = require("discord.js");
+const { ActivityType, EmbedBuilder } = require("discord.js");
 const mongoose = require("mongoose");
 const CronJob = require("cron").CronJob;
 
@@ -16,7 +16,14 @@ module.exports = {
     console.log(`Logged in as ${client.user.tag}!`);
 
     // Fetch reaction messages
-    const messages = ["1110408033948934246", "1110408997984542760", "1110409412478238720", "1110410509213241384", "1110411293015429181"];
+    const messages = [
+      "1110408033948934246",
+      "1110408997984542760",
+      "1110409412478238720",
+      "1110410509213241384",
+      "1110411293015429181",
+      "1111028949431111772",
+    ];
     const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
     const rolesChannel = await mainGuild.channels.fetch("1109688874634067971");
     for (const message of messages) {
