@@ -13,7 +13,7 @@ module.exports = {
           extension: "png",
         }),
       })
-      .setColor("#8ef1ec")
+      .setColor("#eec1ad")
       .setTimestamp()
       .setTitle("done recieving help?")
       .setAuthor({

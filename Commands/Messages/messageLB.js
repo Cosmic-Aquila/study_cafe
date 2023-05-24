@@ -17,7 +17,7 @@ module.exports = {
         name: "study cafe message lb",
         iconURL: guild.iconURL({ extension: "png" }),
       })
-      .setColor("#8ef1ec");
+      .setColor("#eec1ad");
 
     for (let i = 0; i < lb.length; i++) {
       const memberID = lb[i].memberID;

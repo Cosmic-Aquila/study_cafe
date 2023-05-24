@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 function sendRepEmbed(interaction, member, repAmount) {
   const embed = new EmbedBuilder()
     .setTitle(`${member.tag} has gained 1 rep point!`)
-    .setColor("#8ef1ec")
+    .setColor("#eec1ad")
     .addFields(
       {
         name: "Current Rep Amount:",

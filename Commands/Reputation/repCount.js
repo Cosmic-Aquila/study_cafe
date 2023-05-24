@@ -16,7 +16,7 @@ module.exports = {
     if (data) {
       let embed = new EmbedBuilder()
         .setTitle(`${user.username}'s rep points!`)
-        .setColor("#8ef1ec")
+        .setColor("#eec1ad")
         .addFields({ name: "reps:", value: `${data.repAmount}` });
       return interaction.reply({ embeds: [embed] });
     } else {

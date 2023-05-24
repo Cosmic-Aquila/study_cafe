@@ -24,7 +24,7 @@ async function messageLB(job, client) {
 
         const embed = new EmbedBuilder()
           .setTitle("weekly top messenger!")
-          .setColor("#8ef1ec")
+          .setColor("#eec1ad")
           .setAuthor({ name: "study cafe", iconURL: mainGuild.iconURL({ extension: "png" }) })
           .addFields(
             {
@@ -42,7 +42,7 @@ async function messageLB(job, client) {
 
         const embed = new EmbedBuilder()
           .setTitle("weekly top messenger!")
-          .setColor("#8ef1ec")
+          .setColor("#eec1ad")
           .setAuthor({ name: "study cafe", iconURL: mainGuild.iconURL({ extension: "png" }) })
           .addFields(
             {

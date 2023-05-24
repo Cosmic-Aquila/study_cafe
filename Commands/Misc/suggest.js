@@ -16,7 +16,7 @@ module.exports = {
     const suggestionID = highestSuggestion ? highestSuggestion.suggestionID + 1 : 1;
 
     const embed = new EmbedBuilder()
-      .setColor("#8ef1ec")
+      .setColor("#eec1ad")
       .addFields({ name: `suggestion from ${interaction.user.username}`, value: suggestion })
       .setFooter({ text: `suggestion id: ${suggestionID}` });
     const suggestMsg = await channel.send({ content: constantsFile.suggestionPingRole, embeds: [embed] });

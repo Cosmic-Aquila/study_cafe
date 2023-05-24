@@ -18,7 +18,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle(`${user.username}'s msg count!`)
-      .setColor("#8ef1ec")
+      .setColor("#eec1ad")
       .addFields({ name: "messages:", value: `${data.messages}` });
 
     interaction.reply({
