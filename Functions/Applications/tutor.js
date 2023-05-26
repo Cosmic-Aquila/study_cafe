@@ -60,7 +60,6 @@ async function tutorApplication(message) {
       .setTitle("There's a new tutor application!")
       .addFields(
         { name: "Discord Name:", value: message.author.tag },
-        { name: "Discord ID:", value: message.author.id },
         { name: "Join Date:", value: guildMember.joinedAt.toDateString() },
         { name: "Level:", value: levelData ? `${levelData.level}` : "0" }
       );
@@ -73,7 +72,7 @@ async function tutorApplication(message) {
       i++;
     }
     const sentMessage = await channel.send({
-      content: `<@&${constantsFile.applicationPingRole}>`,
+      content: `<@&${constantsFile.applicationPingRole}>\nID: ${message.author.id}`,
       embeds: [embed],
     });
 

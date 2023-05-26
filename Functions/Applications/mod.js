@@ -58,7 +58,6 @@ async function modApplication(message) {
       .setTitle("There's a new moderator application!")
       .addFields(
         { name: "Discord Name:", value: message.author.tag },
-        { name: "Discord ID:", value: message.author.id },
         { name: "Join Date:", value: guildMember.joinedAt.toDateString() },
         { name: "Level:", value: levelData ? `${levelData.level}` : "0" }
       );
@@ -71,7 +70,7 @@ async function modApplication(message) {
       i++;
     }
     const sentMessage = await channel.send({
-      content: `<@&${constantsFile.applicationPingRole}>`,
+      content: `<@&${constantsFile.applicationPingRole}>\nID: ${message.author.id}`,
       embeds: [embed],
     });
 
