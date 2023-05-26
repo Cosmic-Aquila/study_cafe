@@ -5,17 +5,18 @@ const { checkLevel } = require("../../Functions/Levels/checkLevel.js");
 module.exports = {
   data: new SlashCommandBuilder().setName("levelupdate").setDescription("Update everyone's levels."),
   async execute(interaction) {
+    await interaction.deferReply({ ephemeral: true });
     try {
       const members = await interaction.guild.members.fetch();
 
       members.forEach(async (member) => {
-        console.log(member.user.username);
-        const data = await expModel.find({ memberID: member.id });
-        console.log(data.level);
-        checkLevel(data.level, interaction.guild, member);
+        const data = await expModel.findOne({ memberID: member.id });
+        if (data) {
+          checkLevel(data.level, interaction.guild, member);
+        }
       });
 
-      interaction.reply({ content: "Done", ephemeral: true });
+      interaction.editReply({ content: "Done", ephemeral: true });
     } catch (error) {
       console.error("Error fetching guild members:", error);
     }
