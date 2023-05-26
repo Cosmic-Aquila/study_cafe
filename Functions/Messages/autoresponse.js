@@ -17,7 +17,7 @@ async function autoresponse(message) {
 
     let isTriggered = false;
 
-    // Check if message content includes a trigger and send a random response
+    // Check if message content includes a trigger and send the response
     for (const item of responseArray) {
       if (message.content.includes(item.trigger.toLowerCase()) && !isTriggered) {
         message.reply(item.reply);
