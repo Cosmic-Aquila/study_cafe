@@ -62,7 +62,7 @@ module.exports = {
     try {
       var member = await guild.members.fetch(message.author.id);
     } catch {
-      return;
+      console.log("could not fetch member");
     }
 
     if (message.channel.type === 1 && member.roles.cache.has(constantsFile.levelthreerole)) {
