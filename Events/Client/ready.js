@@ -23,6 +23,7 @@ module.exports = {
       "1110410509213241384",
       "1110411293015429181",
       "1111028949431111772",
+      "1111583792373715004",
     ];
     const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
     const rolesChannel = await mainGuild.channels.fetch("1109688874634067971");
