@@ -91,7 +91,7 @@ module.exports = {
         message.member.roles.cache.has(constantsFile.mainStaffrole) == false &&
         message.member.roles.cache.has(constantsFile.noAutoReplyRole) == false
       ) {
-        autoresponse(message);
+        await autoresponse(message);
       }
 
       if (message.guild.id == constantsFile.mainServerID) {
