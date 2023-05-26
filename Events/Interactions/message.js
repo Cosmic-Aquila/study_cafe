@@ -100,7 +100,9 @@ module.exports = {
         } else {
           warnModel.create({ memberID: message.author.id, reasons: [`Saying a blacklsited word: ${message.content}`] });
         }
-        message.delete();
+        setTimeout(() => {
+          message.delete().catch((error) => console.error("Failed to delete the message:", error));
+        }, 30000);
         return;
       }
 
