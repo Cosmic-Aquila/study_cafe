@@ -9,8 +9,9 @@ module.exports = {
       const members = await interaction.guild.members.fetch();
 
       members.forEach(async (member) => {
-        console.log(member);
+        console.log(member.user.username);
         const data = await expModel.find({ memberID: member.id });
+        console.log(data.level);
         checkLevel(data.level, interaction.guild, member);
       });
 
