@@ -59,7 +59,11 @@ module.exports = {
     if (message.author.bot) return;
 
     const guild = await message.client.guilds.fetch(constantsFile.mainServerID);
-    const member = await guild.members.fetch(message.author.id);
+    try {
+      var member = await guild.members.fetch(message.author.id);
+    } catch {
+      return;
+    }
 
     if (message.channel.type === 1 && member.roles.cache.has(constantsFile.levelthreerole)) {
       // DMs
