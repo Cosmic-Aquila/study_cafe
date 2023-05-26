@@ -23,10 +23,11 @@ module.exports = {
       "1110410509213241384",
       "1110411293015429181",
       "1111028949431111772",
-      "1111583792373715004",
     ];
     const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
     const rolesChannel = await mainGuild.channels.fetch("1109688874634067971");
+    const tutorRolesChannel = await mainGuild.channels.fetch("1111580805312041000");
+    await tutorRolesChannel.messages.fetch("1111583792373715004");
     for (const message of messages) {
       try {
         await rolesChannel.messages.fetch(message);
