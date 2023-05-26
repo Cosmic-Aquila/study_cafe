@@ -63,6 +63,7 @@ module.exports = {
         .setColor("eec1ad");
 
       welcomeChannel.send({ content: `<@&${constantsFile.welcomePingRole}>`, embeds: [embed] });
+      await applicationModel.findOneAndDelete({ memberID: member.id });
     }
   },
 };
