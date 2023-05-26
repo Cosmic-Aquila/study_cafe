@@ -57,7 +57,6 @@ async function tutorApplication(message) {
     const levelData = await levelModel.findOne({ memberID: message.author.id });
     const guildMember = await guild.fetch(message.author.id);
     const embed = new EmbedBuilder()
-      // Change title
       .setTitle("There's a new tutor application!")
       .addFields(
         { name: "Discord Name:", value: message.author.tag },

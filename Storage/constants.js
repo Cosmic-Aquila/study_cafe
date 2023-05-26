@@ -7,15 +7,20 @@ const ids = {
   mainServerID: "1109688873187020893",
   staffServerID: "1109690822854717582",
 
-  // Channel IDs
+  // Staff Server Channel IDS
   statusChannel: "1109690823840387142",
+  staffLBChannel: "1109690823303516232",
+  highStaffChannel: "1109690823840387143",
+  applicationLogChannel: "1109690823647440987",
+  staffWelcomeChannel: "1109690822900854823",
+  modGuideChannel: "1109690823303516238",
+  tutorGuideChannel: "1109690823303516239",
+
+  // Channel IDs
   mainGeneralChat: "1110992982326386790",
   getHelpChannel: "1109688875061870698",
-  staffLBChannel: "1109690823303516232",
   mainLBChannel: "1109688874634067972",
-  highStaffChannel: "1109690823840387143",
   punishmentChannel: "1109688875682631753",
-  applicationLogChannel: "1109690823647440987",
   welcomeChannel: "1109688874634067969",
   rulesChannel: "1109688874634067969",
   countingChannel: "1109688874822799431",
@@ -61,6 +66,12 @@ const roles = {
   levelthirtyrole: "1109688873669361674",
   levelfortyrole: "1109688873669361675",
   levelfiftyrole: "1109688873669361676",
+
+  // Staff Roles (staff server)
+  staffJrMod: "1109690822884069543",
+  staffTrialTutor: "1109690822884069537",
+  staffModTeam: "1109690822884069542",
+  staffTutorTeam: "1109690822884069536",
 };
 
 // XP parameters

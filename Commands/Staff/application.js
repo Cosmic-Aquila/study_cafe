@@ -39,7 +39,5 @@ module.exports = {
     } else if (!data) {
       interaction.reply("No application found for a user with that ID");
     }
-
-    await applicationsModel.findOneAndDelete({ memberID: id });
   },
 };

@@ -67,7 +67,7 @@ module.exports = {
         memberID: message.author.id,
       });
       if (message.content.toLowerCase().includes("apply") && !applicationData) {
-        message.reply("What team would you like to apply for:\nMod\nEvents\nTutor");
+        message.reply("What team would you like to apply for:\nMod\nTutor");
       } else if (message.content.toLowerCase() == "cancel" && applicationData && applicationData.answers.length < applicationData.questions.length) {
         await applicationModel.findOneAndDelete({ memberID: message.author.id });
         message.reply("Application cancelled!");
