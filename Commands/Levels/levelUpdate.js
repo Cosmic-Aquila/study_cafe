@@ -1,9 +1,12 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 const expModel = require("../../Model/Levels/exp.js");
 const { checkLevel } = require("../../Functions/Levels/checkLevel.js");
 
 module.exports = {
-  data: new SlashCommandBuilder().setName("levelupdate").setDescription("Update everyone's levels."),
+  data: new SlashCommandBuilder()
+    .setName("levelupdate")
+    .setDescription("Update everyone's levels.")
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
   async execute(interaction) {
     await interaction.deferReply({ ephemeral: true });
     try {
