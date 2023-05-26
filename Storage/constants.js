@@ -51,7 +51,6 @@ const roles = {
 
   // Misc Roles
   noCooldownRole: "1109688873778430131",
-  mainStaffrole: "1109688873778430128",
   noAutoReplyRole: "1109688873635811412",
   boosterRole: "1109705746515509318",
   muteRole: "1109688873753247772",
@@ -72,6 +71,12 @@ const roles = {
   staffTrialTutor: "1109690822884069537",
   staffModTeam: "1109690822884069542",
   staffTutorTeam: "1109690822884069536",
+
+  // Staff Roles (main server)
+  mainJrMod: "1109688873837137924",
+  mainModTeam: "1109688873837137923",
+  mainStaffrole: "1109688873778430128",
+  mainTrialTutor: "1109688873837137921",
 };
 
 // XP parameters

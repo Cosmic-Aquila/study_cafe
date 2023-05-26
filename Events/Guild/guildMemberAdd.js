@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const constantsFile = require("../../Storage/constants.js");
 const applicationModel = require("../../Model/Staff/applications.js");
+const { client } = require("../../index.js");
 
 module.exports = {
   name: "guildMemberAdd",
@@ -43,8 +44,18 @@ module.exports = {
       }
     } else if (member.guild.id === constantsFile.staffServerID) {
       const data = await applicationModel.findOne({ memberID: member.id });
+
       if (!member.user.bot && !data && member.kickable) {
         await member.kick();
+      }
+
+      try {
+        const guild = await client.guilds.fetch(constantsFile.mainServerID);
+        var mainMember = await guild.member.fetch(message.author.id);
+      } catch {
+        if (!member.user.bot && member.kickable) {
+          await member.kick();
+        }
       }
       const welcomeChannel = await member.guild.channels.fetch(constantsFile.staffWelcomeChannel);
       let toRead;
@@ -52,10 +63,15 @@ module.exports = {
         toRead = constantsFile.modGuideChannel;
         await member.roles.add(constantsFile.staffJrMod);
         await member.roles.add(constantsFile.staffModTeam);
+        await mainMember.roles.add(constantsFile.mainStaffrole);
+        await mainMember.roles.add(constantsFile.mainJrMod);
+        await mainMember.roles.add(constantsFile.mainModTeam);
       } else if (data.type === "tutor") {
         toRead = constantsFile.tutorGuideChannel;
         await member.roles.add(constantsFile.staffTrialTutor);
         await member.roles.add(constantsFile.staffTutorTeam);
+        await mainMember.roles.add(constantsFile.mainTrialTutor);
+        await mainMember.roles.add(constantsFile.mainStaffrole);
       }
       const embed = new EmbedBuilder()
         .setTitle(`wlc ${member.user.username}!`)
