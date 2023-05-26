@@ -13,6 +13,7 @@ const messageModel = require("../../Model/messages.js");
 const applicationModel = require("../../Model/Staff/applications.js");
 const bumpModel = require("../../Model/bump.js");
 const countModel = require("../../Model/counting.js");
+const warnModel = require("../../Model/Moderation/warns.js");
 
 module.exports = {
   name: "messageCreate",
@@ -91,7 +92,14 @@ module.exports = {
       const badWordsRegex = new RegExp(badWords.join("|"), "i");
 
       if (badWordsRegex.test(message.content.toLowerCase())) {
-        await message.channel.send(`<@${message.author.id}> that message contained a blacklisted word`);
+        await message.channel.send(`<@${message.author.id}> that message contains a blacklisted word`);
+        const warnData = await warnModel.findOne({ memberID: message.author.id });
+        if (warnData) {
+          warnData.reasons.push(`Saying a blacklsited word: ${message.content}`);
+          warnData.save();
+        } else {
+          warnModel.create({ memberID: message.author.id, reasons: [`Saying a blacklsited word: ${message.content}`] });
+        }
         message.delete();
         return;
       }
