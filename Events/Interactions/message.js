@@ -5,6 +5,7 @@ const { tutorApplication } = require("../../Functions/Applications/tutor.js");
 
 const config = require("../../Storage/config.json");
 const constantsFile = require("../../Storage/constants.js");
+const { badWords } = require("../../Storage/badWords.js");
 
 const axios = require("axios");
 
@@ -87,6 +88,14 @@ module.exports = {
     }
 
     if (message.channel.type === 0) {
+      const badWordsRegex = new RegExp(badWords.join("|"), "i");
+
+      if (badWordsRegex.test(message.content.toLowerCase())) {
+        await message.channel.send(`<@${message.author.id}> that message contained a blacklisted word`);
+        message.delete();
+        return;
+      }
+
       if (
         message.member.roles.cache.has(constantsFile.mainStaffrole) == false &&
         message.member.roles.cache.has(constantsFile.noAutoReplyRole) == false
