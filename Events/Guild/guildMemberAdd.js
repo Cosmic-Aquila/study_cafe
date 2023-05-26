@@ -62,7 +62,7 @@ module.exports = {
         .setDescription(`be sure to read <#${toRead}> then come to <#${constantsFile.mainGeneralChat}>! enjoy your stay!`)
         .setColor("eec1ad");
 
-      welcomeChannel.send({ content: `<@&${constantsFile.welcomePingRole}>`, embeds: [embed] });
+      welcomeChannel.send({ embeds: [embed] });
       await applicationModel.findOneAndDelete({ memberID: member.id });
     }
   },
