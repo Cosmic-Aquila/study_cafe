@@ -27,7 +27,7 @@ module.exports = {
     if (data && decision == true) {
       const applicant = await guild.members.fetch(id);
       applicant.send(
-        `Congratulations on being accepted into the study cafe staff team ${applicant.user.username} Please follow this link https://discord.gg/GdSD8GubY4 to join the staff server`
+        `Congratulations on being accepted into the study cafe staff team ${applicant.user.username} Please follow this link https://discord.gg/gb7v3AZQdC to join the staff server`
       );
       interaction.reply({ content: "User Accepted", ephemeral: true });
     } else if (data && decision == false) {
