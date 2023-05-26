@@ -28,7 +28,11 @@ module.exports = {
     const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
     const rolesChannel = await mainGuild.channels.fetch("1109688874634067971");
     for (const message of messages) {
-      await rolesChannel.messages.fetch(message);
+      try {
+        await rolesChannel.messages.fetch(message);
+      } catch {
+        console.log(`Could not fetch ${message}`);
+      }
     }
 
     // Get channel and send a message saying the bot has started
