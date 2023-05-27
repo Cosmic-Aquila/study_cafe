@@ -89,7 +89,7 @@ module.exports = {
     }
 
     if (message.channel.type === 0) {
-      const badWordsRegex = new RegExp(badWords.join("|"), "i");
+      const badWordsRegex = new RegExp("\\b(" + badWords.join("|") + ")\\b", "i");
 
       if (badWordsRegex.test(message.content.toLowerCase())) {
         const sentMsg = await message.channel.send(`<@${message.author.id}> that message contains a blacklisted word`);
