@@ -25,6 +25,8 @@ const ids = {
   rulesChannel: "1112444074595729458",
   countingChannel: "1112465861236756642",
   suggestionChannel: "1112465528670388244",
+  rolesChannel: "1112465490841960538",
+  tutorRolesChannel: "1111580805312041000",
 
   // Category IDs
   academicCategory: "1109688875061870697",
