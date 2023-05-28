@@ -27,6 +27,6 @@ module.exports = {
       suggestionID: suggestionID,
       memberID: interaction.user.id,
     });
-    interaction.reply(`suggestion sent to <#1040840533414793297>!`);
+    interaction.reply(`suggestion sent to <#${constantsFile.suggestionChannel}>!`);
   },
 };
