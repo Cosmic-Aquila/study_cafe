@@ -17,21 +17,21 @@ const ids = {
   tutorGuideChannel: "1109690823303516239",
 
   // Channel IDs
-  mainGeneralChat: "1110992982326386790",
-  getHelpChannel: "1109688875061870698",
-  mainLBChannel: "1109688874634067972",
-  punishmentChannel: "1109688875682631753",
-  welcomeChannel: "1109688874634067969",
-  rulesChannel: "1109688874634067969",
-  countingChannel: "1109688874822799431",
-  suggestionChannel: "1109688874822799425",
+  mainGeneralChat: "1112440001498722496",
+  getHelpChannel: "1112444559352418365",
+  mainLBChannel: "1112465313112543302",
+  punishmentChannel: "1112466933435088968",
+  welcomeChannel: "1112441197491916911",
+  rulesChannel: "1112444074595729458",
+  countingChannel: "1112465861236756642",
+  suggestionChannel: "1112465528670388244",
 
   // Category IDs
   academicCategory: "1109688875061870697",
 
   // Message IDs
-  openMessage: "1109882963971289160",
-  closeMessage: "1109882965577703425",
+  openMessage: "1112467523548487734",
+  closeMessage: "1112467526425788426",
 };
 
 const roles = {
