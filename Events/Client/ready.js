@@ -17,12 +17,12 @@ module.exports = {
 
     // Fetch reaction messages
     const messages = [
-      "1110408033948934246",
-      "1110408997984542760",
-      "1110409412478238720",
-      "1110410509213241384",
-      "1110411293015429181",
-      "1111028949431111772",
+      "1112966931868307527",
+      "1112966015903596545",
+      "1112969138831368292",
+      "1112972458157408326",
+      "1112971510777397268",
+      "1112973999325052978",
     ];
     const mainGuild = await client.guilds.fetch(constantsFile.mainServerID);
     const rolesChannel = await mainGuild.channels.fetch(constantsFile.rolesChannel);

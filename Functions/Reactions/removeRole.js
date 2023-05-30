@@ -1,7 +1,7 @@
 async function removeRoles(messageID, emoji, member) {
   const guild = member.guild;
   switch (messageID) {
-    case "1110408033948934246":
+    case "1112966931868307527":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873635811410");
         member.roles.remove(role);
@@ -19,7 +19,7 @@ async function removeRoles(messageID, emoji, member) {
         member.roles.remove(role);
       }
       break;
-    case "1110408997984542760":
+    case "1112966015903596545":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873589686339");
         member.roles.remove(role);
@@ -35,7 +35,7 @@ async function removeRoles(messageID, emoji, member) {
       }
       break;
     // file deepcode ignore DuplicateCaseBody: <please specify a reason of ignoring this>
-    case "1110409412478238720":
+    case "1112969138831368292":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873589686332");
         member.roles.remove(role);
@@ -50,7 +50,7 @@ async function removeRoles(messageID, emoji, member) {
         member.roles.remove(role);
       }
       break;
-    case "1110410509213241384":
+    case "1112972458157408326":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873551921187");
         member.roles.remove(role);
@@ -71,7 +71,7 @@ async function removeRoles(messageID, emoji, member) {
         member.roles.remove(role);
       }
       break;
-    case "1110411293015429181":
+    case "1112971510777397268":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873530953756");
         member.roles.remove(role);
@@ -98,7 +98,7 @@ async function removeRoles(messageID, emoji, member) {
         member.roles.remove(role);
       }
       break;
-    case "1111028949431111772":
+    case "1112973999325052978":
       if (emoji === "one") {
         const role = await guild.roles.fetch("1109688873753247770");
         member.roles.remove(role);
