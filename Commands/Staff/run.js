@@ -6,7 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("run")
     .setDescription("Run a command!")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageThreads)
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption((option) => option.setName("command").setDescription("The command to run").setRequired(true)),
   async execute(interaction) {
     if (interaction.user.id !== constants.ownerID) {
