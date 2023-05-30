@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const config = require("./Storage/config.json");
-const repliesModel = require("./Model/replies.js");
+const config = require("./config.json");
+const repliesModel = require("../Model/replies.js");
 
 async function connect() {
   await mongoose.connect(config.mongoosePath, {
