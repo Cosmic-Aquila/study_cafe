@@ -27,6 +27,7 @@ const ids = {
   suggestionChannel: "1112465528670388244",
   rolesChannel: "1112465490841960538",
   tutorRolesChannel: "1111580805312041000",
+  cmdChannel: "1112440023837577228",
 
   // Category IDs
   academicCategory: "1109688875061870697",

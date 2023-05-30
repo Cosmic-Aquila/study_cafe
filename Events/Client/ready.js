@@ -107,7 +107,7 @@ module.exports = {
         const timeDiffInMs = currentTime - lastBumped;
         const timeDiffInHours = timeDiffInMs / (1000 * 60 * 60); // Convert milliseconds to hours
         if (timeDiffInHours >= 2 && bumpData.hasPinged === false) {
-          const channel = await client.channels.fetch("1110993048919343205");
+          const channel = await client.channels.fetch(constantsFile.cmdChannel);
           const embed = new EmbedBuilder()
             .setDescription("Time to bump the server!")
             .setColor("#8ef1ec")
