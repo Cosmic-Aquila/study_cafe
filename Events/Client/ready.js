@@ -1,5 +1,6 @@
 const { ActivityType, EmbedBuilder } = require("discord.js");
 const mongoose = require("mongoose");
+const moment = require("moment");
 const CronJob = require("cron").CronJob;
 
 const config = require("../../Storage/config.json");
@@ -7,6 +8,8 @@ const constantsFile = require("../../Storage/constants.js");
 
 const muteModel = require("../../Model/Moderation/mutes.js");
 const bumpModel = require("../../Model/bump.js");
+const pomodoroModel = require("../../Model/Pomodoro/pomodoro.js");
+const minutesModel = require("../../Model/Pomodoro/minutes.js");
 
 module.exports = {
   name: "ready",
@@ -119,6 +122,68 @@ module.exports = {
           channel.send({ content: `<@&${constantsFile.bumpPings}>`, embeds: [embed] });
           bumpData.hasPinged = true;
           bumpData.save();
+        }
+
+        const pomodoroDatas = await pomodoroModel.find({});
+        for (const pomodoroData of pomodoroDatas) {
+          const givenDate = pomodoroData.joinedAt;
+          const timeNow = new Date();
+          const timeSince = (timeNow - givenDate) / (1000 * 60);
+
+          const member = await mainGuild.members.fetch(pomodoroData.memberID);
+
+          if (!member.voice.channel) {
+            await pomodoroModel.findOneAndDelete({ memberID: pomodoroData.memberID });
+            const voiceData = await pomodoroModel.findOne({ work: pomodoroData.work, break: pomodoroData.break });
+            if (!voiceData) {
+              await mainGuild.channels.delete(pomodoroData.voiceChannelID);
+              await mainGuild.channels.delete(pomodoroData.breakChannelID);
+            }
+            return;
+          }
+
+          if (pomodoroData.type === "work" && givenDate < timeNow && timeSince > pomodoroData.work) {
+            const channel = await mainGuild.channels.fetch(pomodoroData.breakChannelID);
+
+            member.voice.setChannel(channel);
+            pomodoroData.type = "break";
+            pomodoroData.hasVerfied = false;
+            pomodoroData.joinedAt = new Date();
+            pomodoroData.save();
+            const oldDateObj = moment();
+            const newDateObj = moment(oldDateObj).add(pomodoroData.break, "m").toDate();
+            const unixTimestamp = Math.floor(newDateObj.getTime() / 1000);
+
+            channel.send(
+              `${member.user.username} your next study is in <t:${unixTimestamp}:R>. Be sure to run the /active cmd so we know you aren't afk!`
+            );
+          } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > pomodoroData.work) {
+            if (!pomodoroData.hasVerfied) {
+              return member.voice.channel.disconnect();
+            }
+            const channel = await mainGuild.channels.fetch(pomodoroData.voiceChannelID);
+
+            member.voice.setChannel(channel);
+            pomodoroData.type = "work";
+            pomodoroData.joinedAt = new Date();
+            pomodoroData.save();
+            const oldDateObj = moment();
+            const newDateObj = moment(oldDateObj).add(pomodoroData.work, "m").toDate();
+            const unixTimestamp = Math.floor(newDateObj.getTime() / 1000);
+
+            channel.send(`${member.user.username} your next break is in <t:${unixTimestamp}:R>`);
+          } else if (pomodoroData.type === "work") {
+            const minutesData = await minutesModel.findOne({ memberID: pomodoroData.memberID });
+            if (minutesData) {
+              minutesData.points += 0.2;
+              minutesData.save();
+            } else {
+              minutesModel.create({
+                memberID: pomodoroData.memberID,
+                points: 0.2,
+              });
+            }
+          }
         }
       } catch (err) {
         console.error(err);
