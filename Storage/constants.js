@@ -54,7 +54,7 @@ const roles = {
 
   // Misc Roles
   noCooldownRole: "1109688873778430131",
-  noAutoReplyRole: "1109688873635811412",
+  noAutoReplyRole: "1113354471859310592",
   boosterRole: "1109705746515509318",
   muteRole: "1109688873753247772",
   memberRole: "1109688873635811413",
