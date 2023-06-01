@@ -128,7 +128,9 @@ module.exports = {
         for (const pomodoroData of pomodoroDatas) {
           const givenDate = pomodoroData.joinedAt;
           const timeNow = new Date();
-          const timeSince = (timeNow - givenDate) * 1000;
+          const timeSince = timeNow - givenDate;
+          const workInMS = pomodoroData.work * 60000;
+          const breakInMS = pomodoroData.break * 60000;
 
           const member = await mainGuild.members.fetch(pomodoroData.memberID);
 
@@ -142,7 +144,7 @@ module.exports = {
             return;
           }
 
-          if (pomodoroData.type === "work" && givenDate < timeNow && timeSince > pomodoroData.work) {
+          if (pomodoroData.type === "work" && givenDate < timeNow && timeSince > workInMS) {
             const channel = await mainGuild.channels.fetch(pomodoroData.breakChannelID);
 
             member.voice.setChannel(channel);
@@ -161,7 +163,7 @@ module.exports = {
             channel.send(
               `${member.user.username} your next study is in <t:${unixTimestamp}:R>. Be sure to run the /active cmd so we know you aren't afk!`
             );
-          } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > pomodoroData.work) {
+          } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > breakInMS) {
             if (!pomodoroData.hasVerified) {
               return await member.voice.disconnect();
             }
