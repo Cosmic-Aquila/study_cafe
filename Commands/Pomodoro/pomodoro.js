@@ -14,7 +14,7 @@ module.exports = {
     const workInterval = interaction.options.getNumber("work");
 
     if (breakInterval <= 0 || breakInterval >= 120 || workInterval <= 0 || workInterval >= 120) {
-      interaction.reply({ content: "Please use numbers from 1-120", ephemeral: true });
+      return interaction.reply({ content: "Please use numbers from 1-120", ephemeral: true });
     }
 
     const existingPomodoro = await pomodoroModel.findOne({ break: breakInterval, work: workInterval });
