@@ -1,5 +1,5 @@
 const pomodoroModel = require("../../Model/Pomodoro/pomodoro.js");
-const { SlashCommandBuilder, ChannelType, PermissionFlagsBits } = require("discord.js");
+const { SlashCommandBuilder, ChannelType, PermissionFlagsBits, messageLink } = require("discord.js");
 const moment = require("moment");
 const constantsFile = require("../../Storage/constants.js");
 
@@ -12,6 +12,10 @@ module.exports = {
   async execute(interaction) {
     const breakInterval = interaction.options.getNumber("break");
     const workInterval = interaction.options.getNumber("work");
+
+    if (breakInterval <= 0 || breakInterval >= 120 || workInterval <= 0 || workInterval >= 120) {
+      interaction.reply({ content: "Please use numbers from 1-120", ephemeral: true });
+    }
 
     const existingPomodoro = await pomodoroModel.findOne({ break: breakInterval, work: workInterval });
     if (!interaction.member.voice.channel) {
