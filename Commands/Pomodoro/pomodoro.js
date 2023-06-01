@@ -15,7 +15,7 @@ module.exports = {
 
     const existingPomodoro = await pomodoroModel.findOne({ breakInterval, workInterval });
     if (!interaction.member.voice.channel) {
-      return interaction.reply("You need to be in a voice channel to start a session so I can move you!");
+      return interaction.reply({ content: "You need to be in a voice channel to start a session so I can move you!", ephemeral: true });
     }
 
     await interaction.deferReply({ ephemeral: true });
