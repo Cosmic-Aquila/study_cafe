@@ -17,7 +17,8 @@ module.exports = {
         name: "study cafe pomodoro lb",
         iconURL: guild.iconURL({ extension: "png" }),
       })
-      .setColor("#eec1ad");
+      .setColor("#eec1ad")
+      .setFooter({ text: "1 minute = .2 points" });
 
     for (let i = 0; i < lb.length; i++) {
       const memberID = lb[i].memberID;
@@ -26,7 +27,7 @@ module.exports = {
         .then((member) => member.user.username)
         .catch(() => null);
       if (name) {
-        embed.addFields({ name: `${ordinal(i + 1)}. ${name}`, value: `**points:** ${Math.round(lb[i].points)}` });
+        embed.addFields({ name: `${ordinal(i + 1)}. ${name}`, value: `**points:** ${Math.round(lb[i].points) / 10}` });
       }
     }
 
