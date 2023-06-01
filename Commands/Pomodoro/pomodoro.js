@@ -33,7 +33,7 @@ module.exports = {
         type: ChannelType.GuildStageVoice,
         permissionOverwrites: [
           { id: constantsFile.mainModTeam, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
-          { id: interaction.guild.id, deny: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
+          { id: interaction.guild.id, allow: [PermissionFlagsBits.ViewChannel], deny: [PermissionFlagsBits.Connect] },
         ],
       });
       channel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
@@ -49,7 +49,7 @@ module.exports = {
         type: ChannelType.GuildStageVoice,
         permissionOverwrites: [
           { id: constantsFile.mainModTeam, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
-          { id: interaction.guild.id, deny: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
+          { id: interaction.guild.id, allow: [PermissionFlagsBits.ViewChannel], deny: [PermissionFlagsBits.Connect] },
         ],
       });
       breakChannel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
