@@ -13,7 +13,7 @@ module.exports = {
     const breakInterval = interaction.options.getNumber("break");
     const workInterval = interaction.options.getNumber("work");
 
-    const existingPomodoro = await pomodoroModel.findOne({ breakInterval, workInterval });
+    const existingPomodoro = await pomodoroModel.findOne({ break: breakInterval, work: workInterval });
     if (!interaction.member.voice.channel) {
       return interaction.reply({ content: "You need to be in a voice channel to start a session so I can move you!", ephemeral: true });
     }
