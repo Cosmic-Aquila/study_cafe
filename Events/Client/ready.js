@@ -159,7 +159,7 @@ module.exports = {
             );
           } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > pomodoroData.work) {
             if (!pomodoroData.hasVerfied) {
-              return member.voice.channel.disconnect();
+              return await member.voice.disconnect();
             }
             const channel = await mainGuild.channels.fetch(pomodoroData.voiceChannelID);
 
