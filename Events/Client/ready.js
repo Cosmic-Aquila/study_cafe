@@ -142,7 +142,9 @@ module.exports = {
 
           console.log(`Fetched Member: ${member.user.tag}`);
           console.log(`Member.voice: ${JSON.stringify(member.voice)}`);
-          console.log(`Channel ID: ${member.voice.channel.id}`);
+          if (member.voice.channel) {
+            console.log(`Channel ID: ${member.voice.channel.id}`);
+          }
 
           if (
             !member.voice.channel ||
