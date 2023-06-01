@@ -27,7 +27,7 @@ module.exports = {
         .then((member) => member.user.username)
         .catch(() => null);
       if (name) {
-        embed.addFields({ name: `${ordinal(i + 1)}. ${name}`, value: `**points:** ${Math.round(lb[i].points) / 10}` });
+        embed.addFields({ name: `${ordinal(i + 1)}. ${name}`, value: `**points:** ${lb[i].points.toFixed(1)}` });
       }
     }
 
