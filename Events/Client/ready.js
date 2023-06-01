@@ -141,6 +141,7 @@ module.exports = {
           const member = await mainGuild.members.fetch(pomodoroData.memberID);
 
           console.log(`Fetched Member: ${member.user.tag}`);
+          console.log(`Member.voice: ${member.voice}`);
 
           if (
             !member.voice.channel ||
