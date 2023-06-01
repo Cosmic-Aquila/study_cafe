@@ -126,18 +126,33 @@ module.exports = {
 
         const pomodoroDatas = await pomodoroModel.find({});
         for (const pomodoroData of pomodoroDatas) {
+          console.log("-----------------------");
+          console.log(`Member ID: ${pomodoroData.memberID}`);
           const givenDate = pomodoroData.joinedAt;
           const timeNow = new Date();
           const timeSince = timeNow - givenDate;
           const workInMS = pomodoroData.work * 60000;
           const breakInMS = pomodoroData.break * 60000;
 
+          console.log(`Time Since in MS: ${timeSince}`);
+          console.log(`Work in MS: ${workInMS}`);
+          console.log(`Break in MS: ${breakInMS}`);
+
           const member = await mainGuild.members.fetch(pomodoroData.memberID);
 
-          if (!member.voice.channel) {
+          console.log(`Fetched Member: ${member.user.tag}`);
+
+          if (
+            !member.voice.channel ||
+            member.voice.channel.id !== pomodoroData.voiceChannelID ||
+            member.voice.channel.id !== pomodoroData.breakChannelID
+          ) {
+            console.log("No voice channel found. Deleting data");
             await pomodoroModel.findOneAndDelete({ memberID: pomodoroData.memberID });
             const voiceData = await pomodoroModel.findOne({ work: pomodoroData.work, break: pomodoroData.break });
+            console.log(`Voice Data: ${voiceData}`);
             if (!voiceData) {
+              console.log("No voice data... deleting channels");
               await mainGuild.channels.delete(pomodoroData.voiceChannelID);
               await mainGuild.channels.delete(pomodoroData.breakChannelID);
             }
@@ -145,6 +160,7 @@ module.exports = {
           }
 
           if (pomodoroData.type === "work" && givenDate < timeNow && timeSince > workInMS) {
+            console.log("Switching to break time");
             const channel = await mainGuild.channels.fetch(pomodoroData.breakChannelID);
 
             member.voice.setChannel(channel);
@@ -164,7 +180,9 @@ module.exports = {
               `${member.user.username} your next study is in <t:${unixTimestamp}:R>. Be sure to run the /active cmd so we know you aren't afk!`
             );
           } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > breakInMS) {
+            console.log("Switching to work");
             if (!pomodoroData.hasVerified) {
+              console.log("User has not verified... disconnecting");
               return await member.voice.disconnect();
             }
             const channel = await mainGuild.channels.fetch(pomodoroData.voiceChannelID);
@@ -195,6 +213,7 @@ module.exports = {
               });
             }
           } else if (pomodoroData.type === "break" && !pomodoroData.hasVerified) {
+            console.log("User has not verified... trying to send reminder");
             const reminderInterval = (pomodoroData.break * 60000) / 5;
             console.log(`Time Since: ${timeSince}`);
             console.log(`Reminder Interval: ${reminderInterval}`);
