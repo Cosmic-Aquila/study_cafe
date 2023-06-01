@@ -142,6 +142,7 @@ module.exports = {
 
           console.log(`Fetched Member: ${member.user.tag}`);
           console.log(`Member.voice: ${JSON.stringify(member.voice)}`);
+          console.log(`Channel ${member.voice.channel}`);
 
           if (!member.voice.channel || member.voice.channel !== pomodoroData.voiceChannelID || member.voice.channel !== pomodoroData.breakChannelID) {
             console.log("No voice channel found. Deleting data");
