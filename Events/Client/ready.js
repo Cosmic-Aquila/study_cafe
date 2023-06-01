@@ -207,7 +207,7 @@ module.exports = {
           } else if (pomodoroData.type === "work") {
             const minutesData = await minutesModel.findOne({ memberID: pomodoroData.memberID });
             if (minutesData) {
-              minutesData.points += 0.2;
+              minutesData.points += 0.1;
               minutesData.save();
             } else {
               minutesModel.create({
