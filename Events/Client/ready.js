@@ -146,8 +146,7 @@ module.exports = {
 
           if (
             !member.voice.channel ||
-            member.voice.channel.id !== pomodoroData.voiceChannelID ||
-            member.voice.channel.id !== pomodoroData.breakChannelID
+            (member.voice.channel.id !== pomodoroData.voiceChannelID && member.voice.channel.id !== pomodoroData.breakChannelID)
           ) {
             console.log("No voice channel found. Deleting data");
             await pomodoroModel.findOneAndDelete({ memberID: pomodoroData.memberID });
