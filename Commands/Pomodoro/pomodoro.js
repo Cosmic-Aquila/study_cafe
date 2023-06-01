@@ -27,6 +27,11 @@ module.exports = {
       interaction.member.voice.setChannel(channel);
       channelID = channel.id;
       breakChannelID = existingPomodoro.breakChannelID;
+      const oldDateObj = moment();
+      const newDateObj = moment(oldDateObj).add(workInterval, "m").toDate();
+      const unixTimestamp = Math.floor(newDateObj.getTime() / 1000);
+
+      channel.send(`${interaction.user.tag} your next break is in <t:${unixTimestamp}:R>`);
     } else {
       const channel = await interaction.guild.channels.create({
         name: `Pomodoro ${workInterval}/${breakInterval}`,
