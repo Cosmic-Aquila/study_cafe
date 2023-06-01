@@ -12,6 +12,6 @@ module.exports = {
     }
     data.hasVerified = true;
     data.save();
-    interaction.editReply({ content: "Done!", ephemeral: true });
+    interaction.reply({ content: "Done!", ephemeral: true });
   },
 };
