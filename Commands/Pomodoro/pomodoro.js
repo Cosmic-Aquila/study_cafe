@@ -65,6 +65,7 @@ module.exports = {
       joinedAt: new Date(),
       type: "work",
       hasVerfied: false,
+      hasReminded: false,
       breakChannelID: breakChannelID,
     });
 

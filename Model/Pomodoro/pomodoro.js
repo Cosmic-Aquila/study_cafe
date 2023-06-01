@@ -8,6 +8,7 @@ const pomodoro = mongoose.Schema({
   joinedAt: Date,
   type: String,
   hasVerfied: Boolean,
+  hasReminded: Boolean,
   breakChannelID: String,
 });
 
