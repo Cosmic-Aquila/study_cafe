@@ -187,7 +187,7 @@ module.exports = {
             const reminderInterval = pomodoroData.break / 5;
             if (timeSince >= reminderInterval) {
               const channel = await mainGuild.channels.fetch(constantsFile.cmdChannel);
-              channel.send(`<@&${pomodoroData.memberID}> run the /active cmd so we know you are still active in your pomodoro session!`);
+              channel.send(`<@${pomodoroData.memberID}> run the /active cmd so we know you are still active in your pomodoro session!`);
             }
           }
         }
