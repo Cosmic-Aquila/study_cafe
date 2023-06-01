@@ -69,7 +69,7 @@ module.exports = {
       voiceChannelID: channelID,
       joinedAt: new Date(),
       type: "work",
-      hasVerfied: false,
+      hasVerified: false,
       hasReminded: false,
       breakChannelID: breakChannelID,
     });

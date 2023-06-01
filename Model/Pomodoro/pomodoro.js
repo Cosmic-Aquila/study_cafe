@@ -7,7 +7,7 @@ const pomodoro = mongoose.Schema({
   voiceChannelID: String,
   joinedAt: Date,
   type: String,
-  hasVerfied: Boolean,
+  hasVerified: Boolean,
   hasReminded: Boolean,
   breakChannelID: String,
 });

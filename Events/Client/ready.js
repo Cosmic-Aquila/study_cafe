@@ -147,7 +147,7 @@ module.exports = {
 
             member.voice.setChannel(channel);
             pomodoroData.type = "break";
-            pomodoroData.hasVerfied = false;
+            pomodoroData.hasVerified = false;
             pomodoroData.joinedAt = new Date();
             pomodoroData.save();
             const oldDateObj = moment();
@@ -162,7 +162,7 @@ module.exports = {
               `${member.user.username} your next study is in <t:${unixTimestamp}:R>. Be sure to run the /active cmd so we know you aren't afk!`
             );
           } else if (pomodoroData.type === "break" && givenDate < timeNow && timeSince > pomodoroData.work) {
-            if (!pomodoroData.hasVerfied) {
+            if (!pomodoroData.hasVerified) {
               return await member.voice.disconnect();
             }
             const channel = await mainGuild.channels.fetch(pomodoroData.voiceChannelID);
@@ -192,7 +192,7 @@ module.exports = {
                 points: 0.2,
               });
             }
-          } else if (pomodoroData.type === "break" && !pomodoroData.hasVerfied) {
+          } else if (pomodoroData.type === "break" && !pomodoroData.hasVerified) {
             const reminderInterval = pomodoroData.break / 60000 / 5;
             if (timeSince >= reminderInterval && pomodoroData.hasReminded === false) {
               const channel = await mainGuild.channels.fetch(constantsFile.cmdChannel);
