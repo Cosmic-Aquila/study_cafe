@@ -184,7 +184,9 @@ module.exports = {
               });
             }
           } else if (pomodoroData.type === "break" && !pomodoroData.hasVerfied) {
-            const reminderInterval = pomodoroData.break / 5;
+            const reminderInterval = pomodoroData.break / 60000 / 5;
+            console.log(reminderInterval);
+            console.log(timeSince);
             if (timeSince >= reminderInterval && pomodoroData.hasReminded === false) {
               const channel = await mainGuild.channels.fetch(constantsFile.cmdChannel);
               channel.send(`<@${pomodoroData.memberID}> run the /active cmd so we know you are still active in your pomodoro session!`);
