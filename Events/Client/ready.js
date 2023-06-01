@@ -128,7 +128,7 @@ module.exports = {
         for (const pomodoroData of pomodoroDatas) {
           const givenDate = pomodoroData.joinedAt;
           const timeNow = new Date();
-          const timeSince = (timeNow - givenDate) / (1000 * 60);
+          const timeSince = (timeNow - givenDate) * 1000;
 
           const member = await mainGuild.members.fetch(pomodoroData.memberID);
 
