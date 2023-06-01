@@ -81,7 +81,7 @@ module.exports = {
       "America/New_York"
     );
 
-    const minuteChecks = async function () {
+    const intervalChecks = async function () {
       try {
         // Check Mutes
         const muteDatas = await muteModel.find({});
@@ -196,6 +196,6 @@ module.exports = {
       }
     };
 
-    setInterval(minuteChecks, 60000);
+    setInterval(intervalChecks, 30000);
   },
 };
