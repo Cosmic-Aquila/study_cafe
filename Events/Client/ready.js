@@ -142,9 +142,13 @@ module.exports = {
 
           console.log(`Fetched Member: ${member.user.tag}`);
           console.log(`Member.voice: ${JSON.stringify(member.voice)}`);
-          console.log(`Channel ${member.voice.channel}`);
+          console.log(`Channel ID: ${member.voice.channel.id}`);
 
-          if (!member.voice.channel || member.voice.channel !== pomodoroData.voiceChannelID || member.voice.channel !== pomodoroData.breakChannelID) {
+          if (
+            !member.voice.channel ||
+            member.voice.channel.id !== pomodoroData.voiceChannelID ||
+            member.voice.channel.id !== pomodoroData.breakChannelID
+          ) {
             console.log("No voice channel found. Deleting data");
             await pomodoroModel.findOneAndDelete({ memberID: pomodoroData.memberID });
             const voiceData = await pomodoroModel.findOne({ work: pomodoroData.work, break: pomodoroData.break });
