@@ -175,10 +175,6 @@ module.exports = {
             const newDateObj = moment(oldDateObj).add(pomodoroData.break, "m").toDate();
             const unixTimestamp = Math.floor(newDateObj.getTime() / 1000);
 
-            if (!channel.stageInstance) {
-              channel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
-            }
-
             channel.send(
               `${member.user.username} your next study is in <t:${unixTimestamp}:R>. Be sure to run the /active cmd so we know you aren't afk!`
             );
@@ -191,10 +187,6 @@ module.exports = {
             const channel = await mainGuild.channels.fetch(pomodoroData.voiceChannelID);
 
             member.voice.setChannel(channel);
-
-            if (!channel.stageInstance) {
-              channel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
-            }
 
             pomodoroData.type = "work";
             pomodoroData.joinedAt = new Date();

@@ -8,13 +8,19 @@ module.exports = {
     .setName("pomodoro")
     .setDescription("Start a session.")
     .addNumberOption((option) => option.setName("work").setDescription("The work interval").setRequired(true))
-    .addNumberOption((option) => option.setName("break").setDescription("The break interval").setRequired(true)),
+    .addNumberOption((option) => option.setName("break").setDescription("The break interval").setRequired(true))
+    .addNumberOption((option) => option.setName("users").setDescription("How many users can join the voice channel").setRequired(true)),
   async execute(interaction) {
     const breakInterval = interaction.options.getNumber("break");
     const workInterval = interaction.options.getNumber("work");
+    const userLimit = interaction.options.getNumber("users");
 
     if (breakInterval <= 0 || breakInterval >= 120 || workInterval <= 0 || workInterval >= 120) {
-      return interaction.reply({ content: "Please use numbers from 1-120", ephemeral: true });
+      return interaction.reply({ content: "Please use numbers from 1-120 for work and break", ephemeral: true });
+    }
+
+    if (userLimit <= 0 || userLimit >= 15) {
+      return interaction.reply({ content: "Please use numbers from 1-15 for user limits", ephemeral: true });
     }
 
     const existingPomodoro = await pomodoroModel.findOne({ break: breakInterval, work: workInterval });
@@ -39,13 +45,13 @@ module.exports = {
     } else {
       const channel = await interaction.guild.channels.create({
         name: `Pomodoro ${workInterval}/${breakInterval}`,
-        type: ChannelType.GuildStageVoice,
+        type: ChannelType.GuildVoice,
         permissionOverwrites: [
           { id: constantsFile.mainModTeam, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
           { id: interaction.guild.id, allow: [PermissionFlagsBits.ViewChannel], deny: [PermissionFlagsBits.Connect] },
         ],
+        userLimit: userLimit,
       });
-      channel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
 
       const oldDateObj = moment();
       const newDateObj = moment(oldDateObj).add(workInterval, "m").toDate();
@@ -61,7 +67,6 @@ module.exports = {
           { id: interaction.guild.id, allow: [PermissionFlagsBits.ViewChannel], deny: [PermissionFlagsBits.Connect] },
         ],
       });
-      breakChannel.createStageInstance({ topic: `Pomodoro ${workInterval}/${breakInterval}` });
       interaction.member.voice.setChannel(channel);
       channelID = channel.id;
       breakChannelID = breakChannel.id;
