@@ -61,11 +61,12 @@ module.exports = {
 
       const breakChannel = await interaction.guild.channels.create({
         name: `Pomodoro Break ${workInterval}/${breakInterval}`,
-        type: ChannelType.GuildStageVoice,
+        type: ChannelType.GuildVoice,
         permissionOverwrites: [
           { id: constantsFile.mainModTeam, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect] },
           { id: interaction.guild.id, allow: [PermissionFlagsBits.ViewChannel], deny: [PermissionFlagsBits.Connect] },
         ],
+        userLimit: userLimit,
       });
       interaction.member.voice.setChannel(channel);
       channelID = channel.id;
