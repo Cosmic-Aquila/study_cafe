@@ -34,9 +34,11 @@ module.exports = {
 
     if (existingPomodoro) {
       const channel = await interaction.guild.channels.fetch(existingPomodoro.voiceChannelID);
+      console.log(channel.userLimit);
+      console.log(channel.members);
 
       if (channel.userLimit >= channel.members.size) {
-        return message.reply("That pomodoro is currently full!");
+        return interaction.editReply({ content: "That pomodoro is currently full!", ephemeral: true });
       }
       interaction.member.voice.setChannel(channel);
       channelID = channel.id;
