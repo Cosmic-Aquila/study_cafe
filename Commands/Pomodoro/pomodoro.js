@@ -37,7 +37,7 @@ module.exports = {
       console.log(channel.userLimit);
       console.log(channel.members);
 
-      if (channel.userLimit >= channel.members.size) {
+      if (channel.members.size >= channel.userLimit) {
         return interaction.editReply({ content: "That pomodoro is currently full!", ephemeral: true });
       }
       interaction.member.voice.setChannel(channel);
