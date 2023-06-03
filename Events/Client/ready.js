@@ -144,6 +144,9 @@ module.exports = {
           console.log(`Member.voice: ${JSON.stringify(member.voice)}`);
           if (member.voice.channel) {
             console.log(`Channel ID: ${member.voice.channel.id}`);
+            console.log(`Channel Size: ${member.voice.channel.userLimit}`);
+            console.log(`Members in channel: ${member.voice.channel.members}`);
+            console.log(`Member Count: ${member.voice.channel.members.size}`);
           }
 
           if (
