@@ -11,6 +11,7 @@ module.exports = {
       return interaction.reply({ content: "You are not in an active pomodoro session", ephemeral: true });
     }
     data.hasVerified = true;
+    data.hasReminded = false;
     data.save();
     interaction.reply({ content: "Done!", ephemeral: true });
   },

@@ -193,6 +193,7 @@ module.exports = {
 
             pomodoroData.type = "work";
             pomodoroData.joinedAt = new Date();
+            pomodoroData.hasVerified = false;
             pomodoroData.save();
             const oldDateObj = moment();
             const newDateObj = moment(oldDateObj).add(pomodoroData.work, "m").toDate();
