@@ -56,6 +56,7 @@ module.exports = {
       .then((members) => {
         console.log(members.size);
         const memberCount = members.filter((member) => !member.user.bot).size;
+        console.log(memberCount);
 
         client.user.setPresence({
           activities: [{ name: `☕ Serving Coffee to ${memberCount} members!`, type: "PLAYING" }],
