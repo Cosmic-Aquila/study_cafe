@@ -57,7 +57,7 @@ module.exports = {
         const memberCount = members.filter((member) => !member.user.bot).size;
 
         client.user.setPresence({
-          activities: [{ name: `☕ Serving Coffee to ${memberCount} members!`, type: ActivityType.Playing }],
+          activities: [{ name: `☕ Helping ${memberCount} customers!`, type: ActivityType.Playing }],
           status: "online",
         });
       })
