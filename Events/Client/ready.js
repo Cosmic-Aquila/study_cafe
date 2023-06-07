@@ -51,7 +51,7 @@ module.exports = {
       });
 
     // Set the bot's status
-    mainGuild.members
+    await mainGuild.members
       .fetch()
       .then((members) => {
         const memberCount = members.filter((member) => !member.user.bot).size;
