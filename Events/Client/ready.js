@@ -54,6 +54,7 @@ module.exports = {
     await mainGuild.members
       .fetch()
       .then((members) => {
+        console.log(members);
         const memberCount = members.filter((member) => !member.user.bot).size;
 
         client.user.setPresence({
