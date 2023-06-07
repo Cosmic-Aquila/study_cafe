@@ -51,10 +51,17 @@ module.exports = {
       });
 
     // Set the bot's status
-    client.user.setPresence({
-      activities: [{ name: `☕ Serving Coffee!`, type: ActivityType.Playing }],
-      status: "online",
-    });
+    mainGuild.members
+      .fetch()
+      .then((members) => {
+        const memberCount = members.filter((member) => !member.user.bot).size;
+
+        client.user.setPresence({
+          activities: [{ name: `☕ Serving Coffee to ${memberCount} members!`, type: "PLAYING" }],
+          status: "online",
+        });
+      })
+      .catch(console.error);
 
     mongoose.set("strictQuery", true);
 
