@@ -18,6 +18,17 @@ module.exports = {
       await helperCooldown.findOneAndDelete({ memberID: member.id });
       await repModel.findOneAndDelete({ memberID: member.id });
       await muteModel.findOneAndDelete({ memberID: member.id });
+      await member.guild.members
+        .fetch()
+        .then((members) => {
+          const memberCount = members.filter((member) => !member.user.bot).size;
+
+          client.user.setPresence({
+            activities: [{ name: `Helping ${memberCount} customers!`, type: ActivityType.Playing }],
+            status: "online",
+          });
+        })
+        .catch(console.error);
     }
   },
 };

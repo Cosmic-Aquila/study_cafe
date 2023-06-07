@@ -41,6 +41,17 @@ module.exports = {
         } else if (member.user.bot) {
           await member.roles.add(constantsFile.botRole);
         }
+        await member.guild.members
+          .fetch()
+          .then((members) => {
+            const memberCount = members.filter((member) => !member.user.bot).size;
+
+            client.user.setPresence({
+              activities: [{ name: `Helping ${memberCount} customers!`, type: ActivityType.Playing }],
+              status: "online",
+            });
+          })
+          .catch(console.error);
       }
     } else if (member.guild.id === constantsFile.staffServerID) {
       const data = await applicationModel.findOne({ memberID: member.id });
