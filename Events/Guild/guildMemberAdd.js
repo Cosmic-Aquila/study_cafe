@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ActivityType } = require("discord.js");
 const constantsFile = require("../../Storage/constants.js");
 const applicationModel = require("../../Model/Staff/applications.js");
 const { client } = require("../../index.js");

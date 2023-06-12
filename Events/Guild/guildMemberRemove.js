@@ -4,6 +4,7 @@ const repCooldown = require("../../Model/Cooldowns/repCooldown.js");
 const helperCooldown = require("../../Model/Cooldowns/helperPing.js");
 const repModel = require("../../Model/repBalance.js");
 const muteModel = require("../../Model/Moderation/mutes.js");
+const { ActivityType } = require("discord.js");
 
 module.exports = {
   name: "guildMemberRemove",
