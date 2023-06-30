@@ -30,7 +30,7 @@ module.exports = {
 
     try {
       const user = await interaction.client.users.fetch(userID, { force: true, cache: true });
-      await guild.members.ban(userID, { reason: banReason, deleteMessageSeconds: deleteDays / 86400 });
+      await guild.members.ban(userID, { reason: banReason, deleteMessageSeconds: deleteDays * 86400 });
 
       const embed = new EmbedBuilder()
         .setColor("#ff7a70")
